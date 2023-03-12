@@ -57,7 +57,7 @@ def prt(num_car):
         print("id\tmodel\t\t\t year\t color\n------------------------------------------")
         for i in range(len(cars)):
             if cars[i].get("year") < num_car:
-                k += 1
+                k = 1
                 print(cars[i].get("id"), "\t", end="")
                 if len(cars[i].get("model")) > 10:
                     print(cars[i].get("model"), "\t", cars[i].get("year"), "\t",
@@ -73,12 +73,18 @@ def prt(num_car):
 
 
 def update(num_car):
-    print("Введите модель автомобиля: ", end="")
-    cars[num_car-1]["model"] = input()
-    print("Введите год выпуска автомобиля: ", end="")
-    cars[num_car-1]["year"] = int(input())
-    print("Введите цвет автомобиля: ", end="")
-    cars[num_car-1]["color"] = input()
+    k = 0
+    for i in range(len(cars)):
+        if cars[i].get("id") == num_car:
+            k = 1
+            print("Введите модель автомобиля: ", end="")
+            cars[num_car-1]["model"] = input()
+            print("Введите год выпуска автомобиля: ", end="")
+            cars[num_car-1]["year"] = int(input())
+            print("Введите цвет автомобиля: ", end="")
+            cars[num_car-1]["color"] = input()
+    if k == 0:
+        print("Нет такого автомобиля.")
 
 
 while True:
