@@ -107,4 +107,12 @@ while True:
         update(int(input()))
     elif num == 5:
         print("Введите id автомобиля: ", end="")
-        cars.pop(int(input())-1)
+        r = 0
+        num_car = int(input())
+        for j in range(len(cars)):
+            if cars[j].get("id") == num_car:
+                r = 1
+                cars.pop(j)
+                break
+        if r == 0:
+            print("Нет такого автомобиля.")
